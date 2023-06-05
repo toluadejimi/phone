@@ -83,7 +83,8 @@ class ProductController extends Controller
     public function buyNow(request $request){
 
 
-        $amount = $request->amount;
+
+        $amount = $request->amount ?? 0;
 
         if($amount == null || $amount == 0){
             return back()->with('error', 'Please wait try reload your browser and try again');
@@ -92,22 +93,21 @@ class ProductController extends Controller
 
          $usr = User::where('id', Auth::id())->first() ?? null;
 
-         $get_user_Wallet = User::where('id', Auth::id())->first()->wallet;
+         $get_user_Wallet = User::where('id', Auth::id())->first()->wallet ?? null;
 
 
-        if($request->amount > $get_user_Wallet){
-
-            return back()->with('error', "Insufficient Balance, Fund your wallet");
-
+         if($get_user_Walle == null){
+            return back()->with('error', 'Please wait try reload your browser and try again');
         }
 
 
+        if($amount > $get_user_Wallet){
 
+            return back()->with('error', "Insufficient Balance, Fund your wallet");
 
-        if($request->amount < $get_user_Wallet){
+        }else{
 
-
-        User::where('id', Auth::id())->decrement('wallet', $request->amount);
+            User::where('id', Auth::id())->decrement('wallet', $request->amount);
 
         $pr = ItemLog::where('id', $request->area_code)->first();
 
@@ -163,6 +163,8 @@ class ProductController extends Controller
 
 
         return redirect('user/dashboard')->with('message', "Log purchase successful");
+
+        }        
 
 
     }

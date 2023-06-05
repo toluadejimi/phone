@@ -175,6 +175,13 @@ class Payment extends BaseResource
     public $redirectUrl;
 
     /**
+     * Cancel URL set on this payment
+     *
+     * @var string
+     */
+    public $cancelUrl;
+
+    /**
      * Webhook URL set on this payment
      *
      * @var string|null
@@ -267,6 +274,36 @@ class Payment extends BaseResource
      * @var \stdClass|null
      */
     public $amountCaptured;
+
+    /**
+     * Indicates whether the capture will be scheduled automatically or not. Set
+     * to manual to capture the payment manually using the Create capture endpoint.
+     *
+     * Possible values: "automatic", "manual"
+     *
+     * @var string|null
+     */
+    public $captureMode;
+
+    /**
+     * Indicates the interval to wait before the payment is
+     * captured, for example `8 hours` or `2 days. The capture delay
+     * will be added to the date and time the payment became authorized.
+     *
+     * Possible values: ... hours ... days
+     * @example 8 hours
+     * @var string|null
+     */
+    public $captureDelay;
+
+    /**
+     * UTC datetime on which the merchant has to have captured the payment in
+     * ISO-8601 format. This parameter is omitted if the payment is not authorized (yet).
+     *
+     * @example "2013-12-25T10:30:54+00:00"
+     * @var string|null
+     */
+    public $captureBefore;
 
     /**
      * The application fee, if the payment was created with one. Contains amount
@@ -688,6 +725,7 @@ class Payment extends BaseResource
     {
         $body = [
             "description" => $this->description,
+            "cancelUrl" => $this->cancelUrl,
             "redirectUrl" => $this->redirectUrl,
             "webhookUrl" => $this->webhookUrl,
             "metadata" => $this->metadata,
