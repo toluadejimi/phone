@@ -104,14 +104,10 @@ class ProductController extends Controller
 
         if($request->amount < $get_user_Wallet){
 
+
+        User::where('id', Auth::id())->decrement('wallet', $request->amount);
+
         $pr = ItemLog::where('id', $request->area_code)->first();
-
-        $user_wallet = User::where('id', Auth::id())->first()->wallet;
-
-        $debit = $user_wallet - $request->amount;
-
-        User::where('id', Auth::id())->update(['wallet' => $debit ]);
-
 
         $trx = new Transaction();
         $trx->trx_ref = "TRX - ". random_int(1000000, 9999999);
@@ -164,7 +160,7 @@ class ProductController extends Controller
 
 
 
-        return back()->with('message', "Log purchase successful");
+        return redirect('user/dashboard')->with('message', "Log purchase successful");
 
 
     }
