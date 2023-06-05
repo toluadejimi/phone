@@ -5,6 +5,14 @@
 @endsection
 @section('content')
 
+@if(Auth::user()->updated_at == null)
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Alert!</strong> Please update your password on your profile page . <a class="text-white" href="/user/profile">Click here to update</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
 
 
 @if ($errors->any())
