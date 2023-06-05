@@ -58,7 +58,7 @@ class ProductController extends Controller
                 User::where('id', Auth::id())->increment('wallet', $amount);
                 Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
 
-                $message =  Auth::user()->name "| funding successful |". number_format($amount, 2);
+                $message =  Auth::user()->name. "| funding successful |". number_format($amount, 2);
                 send_notification($message);
 
                 return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
@@ -67,6 +67,9 @@ class ProductController extends Controller
 
 
         if ($status == 'failed') {
+
+            $message =  Auth::user()->name. "| canceled funding |";
+            send_notification($message);
 
             return redirect('user/dashboard')->with('error', 'Transaction Declined');
         }
