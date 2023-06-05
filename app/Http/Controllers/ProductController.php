@@ -16,17 +16,18 @@ use MercadoPago\Item;
 
 class ProductController extends Controller
 {
-   
 
-    public function fund_now(request $request){
+
+    public function fund_now(request $request)
+    {
 
         $key = env('WEBKEY');
-        $ref= "FUD-".random_int(100000, 999999);
+        $ref = "FUD-" . random_int(100000, 999999);
 
         $url = "https://web.enkpay.com/pay?amount=$request->amount&key=$key&ref=$ref";
 
 
-        $trx= new Transaction();
+        $trx = new Transaction();
         $trx->amount = $request->amount;
         $trx->user_id = Auth::id();
         $trx->status = 0;
@@ -36,12 +37,12 @@ class ProductController extends Controller
 
 
         return Redirect::to($url);
-
     }
 
-    public function verify_trx(request $request){
+    public function verify_trx(request $request)
+    {
 
-     
+
 
         $trx_id = $request->trans_id;
         $amount = $request->amount;
@@ -49,156 +50,143 @@ class ProductController extends Controller
 
         // dd("hello");
 
-        if($status == 'success'){
+        if ($status == 'success') {
             $getx =  Transaction::where('trx_ref', $trx_id)->where('status', 0)->first() ?? null;
 
-            if($getx != null){
-    
+            if ($getx != null) {
+
                 User::where('id', Auth::id())->increment('wallet', $amount);
                 Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
                 return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
             }
-
-
-
-
         }
 
 
-        if($status == 'failed'){
+        if ($status == 'failed') {
 
-                return redirect('user/dashboard')->with('error', 'Transaction Declined');
-          
+            return redirect('user/dashboard')->with('error', 'Transaction Declined');
         }
 
         return redirect('user/dashboard')->with('error', 'Transaction Declined');
-
     }
 
 
-    
 
-   
-   
-    public function buyNow(request $request){
+
+
+
+    public function buyNow(request $request)
+    {
 
 
 
         $amount = $request->amount ?? 0;
 
-        if($amount == null || $amount == 0){
+        if ($amount == null || $amount == 0) {
             return back()->with('error', 'Please wait try reload your browser and try again');
         }
 
 
-         $usr = User::where('id', Auth::id())->first() ?? null;
+        $usr = User::where('id', Auth::id())->first() ?? null;
 
-         $get_user_Wallet = User::where('id', Auth::id())->first()->wallet ?? null;
+        $get_user_Wallet = User::where('id', Auth::id())->first()->wallet ?? null;
 
 
-         if($get_user_Walle == null){
+        if ($get_user_Walle == null) {
             return back()->with('error', 'Please wait try reload your browser and try again');
         }
 
 
-        if($amount > $get_user_Wallet){
+        if ($amount > $get_user_Wallet) {
 
             return back()->with('error', "Insufficient Balance, Fund your wallet");
-
-        }else{
+        } else {
 
             User::where('id', Auth::id())->decrement('wallet', $request->amount);
 
-        $pr = ItemLog::where('id', $request->area_code)->first();
+            $pr = ItemLog::where('id', $request->area_code)->first();
 
-        $trx = new Transaction();
-        $trx->trx_ref = "TRX - ". random_int(1000000, 9999999);
-        $trx->user_id = Auth::id();
-        $trx->amount = $pr->price;
-        $trx->type = 1;
-        $trx->status = 1;
-        $trx->save();
-
-
-
-        $sold = new Sold();
-        $sold->user_id = Auth::id();
-        $sold->area_code = $pr->area_code;
-        $sold->amount = $pr->price;
-        $sold->data = $pr->data;
-        $sold->save();
-
-
-        $order = new Order();
-        $order->order_id = "TRX - ". random_int(1000000, 9999999);
-        $order->user_id = Auth::id();
-        $order->amount = $pr->price;
-        $order->save();
-
-
-        ItemLog::where('id', $request->area_code)->delete();
+            $trx = new Transaction();
+            $trx->trx_ref = "TRX - " . random_int(1000000, 9999999);
+            $trx->user_id = Auth::id();
+            $trx->amount = $pr->price;
+            $trx->type = 1;
+            $trx->status = 1;
+            $trx->save();
 
 
 
-        //send mail
-        $data = array(
-            'fromsender' => 'noreply@enkpay.com', 'EnkPay',
-            'subject' => "LOG Purchase",
-            'toreceiver' => Auth::user()->email,
-            'logdata' => $pr->data,
-            'area_code' => $pr->area_code,
-            'name' => Auth::user()->name,
+            $sold = new Sold();
+            $sold->user_id = Auth::id();
+            $sold->area_code = $pr->area_code;
+            $sold->amount = $pr->price;
+            $sold->data = $pr->data;
+            $sold->save();
+
+
+            $order = new Order();
+            $order->order_id = "TRX - " . random_int(1000000, 9999999);
+            $order->user_id = Auth::id();
+            $order->amount = $pr->price;
+            $order->save();
+
+
+            ItemLog::where('id', $request->area_code)->delete();
 
 
 
-        );
-
-
-        Mail::send('mails.log', ["data1" => $data], function ($message) use ($data) {
-            $message->from($data['fromsender']);
-            $message->to($data['toreceiver']);
-            $message->subject($data['subject']);
-        });
-
-
-
-        return redirect('user/dashboard')->with('message', "Log purchase successful");
-
-        }        
-
-
-    }
-
-
-    return back()->with('error', "Insufficient Balance, Fund your wallet");
+            //send mail
+            $data = array(
+                'fromsender' => 'noreply@enkpay.com', 'EnkPay',
+                'subject' => "LOG Purchase",
+                'toreceiver' => Auth::user()->email,
+                'logdata' => $pr->data,
+                'area_code' => $pr->area_code,
+                'name' => Auth::user()->name,
 
 
 
-    }
+            );
 
-        public function areacode(Request $request)
-        {
-            $data['states'] = ItemLog::where("item_id", $request->item_id)
-                                          ->get(["area_code", "id"]);
-      
-            return response()->json($data);
+
+            Mail::send('mails.log', ["data1" => $data], function ($message) use ($data) {
+                $message->from($data['fromsender']);
+                $message->to($data['toreceiver']);
+                $message->subject($data['subject']);
+            });
+
+
+
+            return redirect('user/dashboard')->with('message', "Log purchase successful");
         }
 
 
+        return back()->with('error', "Insufficient Balance, Fund your wallet");
+    }
 
-        
-        /**
-         * Write code on Method
-         *
-         * @return response()
-         */
-        public function amount(Request $request)
-        {
-            $data['cities'] = ItemLog::where("id", $request->id)
+    public function areacode(Request $request)
+    {
+        $data['states'] = ItemLog::where("item_id", $request->item_id)
+            ->get(["area_code", "id"]);
+
+        return response()->json($data);
+    }
+
+
+
+
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function amount(Request $request)
+    {
+        $data['cities'] = ItemLog::where("id", $request->id)
             ->get(["price", "id"]);
-                                          
-            return response()->json($data);
-        }
+
+        return response()->json($data);
+    }
 
     // }
 }
