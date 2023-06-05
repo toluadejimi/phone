@@ -83,26 +83,24 @@ class ProductController extends Controller
     public function buyNow(request $request){
 
 
-        $amount_of_product = $request->qty * $request->amount;
+
 
          $usr = User::where('id', Auth::id())->first() ?? null;
 
 
 
+
          $get_user_Wallet = User::where('id', Auth::id())->first()->wallet;
 
-        if($amount_of_product < $get_user_Wallet){
+
+        if($request->amount > $get_user_Wallet){
 
             return back()->with('error', "Insufficient Balance, Fund your wallet");
 
         }
 
 
-        if($amount_of_product < $get_user_Wallet){
-
-            return back()->with('error', "Insufficient Balance, Fund your wallet");
-
-        }
+     
 
 
 
