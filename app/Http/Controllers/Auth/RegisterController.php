@@ -57,41 +57,9 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(request $request)
-    {
-
-        $em = User::where('email', $request->email)->first()->email ?? null;
-
-        if($em == $request->email){
-            return back()->with('error', 'Email has been taken');
-        }
+   
 
 
-            $usr = new User();
-            $usr->name = $request->name;
-            $usr->email = $request->email;
-            $usr->password = Hash::make($request->password);
-            $usr->save();
-
-
-            return redirect('/login')->with('message', 'Account has been created Successfully');
-
-      
-
-
-     
-    }
-
-
-    public function generateAuthKey()
-    {
-        $rend = Str::random(50);
-        $check = User::where('authkey', $rend)->first();
-
-        if($check == true){
-            $rend = $this->generateAuthKey();
-        }
-        return $rend;
-    }
+  
 
 }

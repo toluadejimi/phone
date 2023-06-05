@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
@@ -141,4 +143,53 @@ class HomeController extends Controller
 
         return view('frontend.page',compact('page'));
     }
+
+
+
+    public function create(request $request)
+    {
+
+        $em = User::where('email', $request->email)->first()->email ?? null;
+
+        if($em == $request->email){
+            return back()->with('error', 'Email has been taken');
+        }
+
+
+            $usr = new User();
+            $usr->name = $request->name;
+            $usr->email = $request->email;
+            $usr->password = Hash::make($request->password);
+            $usr->save();
+
+
+            return redirect('/login')->with('message', 'Account has been created Successfully');
+
+      
+
+
+     
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
