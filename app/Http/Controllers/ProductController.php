@@ -100,10 +100,9 @@ class ProductController extends Controller
         }
 
 
-     
 
 
-
+        if($request->amount < $get_user_Wallet){
 
         $pr = ItemLog::where('id', $request->area_code)->first();
 
@@ -112,10 +111,6 @@ class ProductController extends Controller
         $debit = $user_wallet - $request->amount;
 
         User::where('id', Auth::id())->update(['wallet' => $debit ]);
-
-
-
-
 
 
         $trx = new Transaction();
@@ -172,30 +167,11 @@ class ProductController extends Controller
         return back()->with('message', "Log purchase successful");
 
 
+    }
 
 
+    return back()->with('error', "Insufficient Balance, Fund your wallet");
 
-
-
-
-
-
-
-        $remv = ItemLog::where('id', $request->area_code)->first();
-
-        // product
-        // area_code
-        // amount
-        // qty
-      
-       
-
-
-
-
-
-
-        
 
 
     }
