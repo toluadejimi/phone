@@ -7,7 +7,7 @@
 
 @if(Auth::user()->updated_at == null)
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Alert!</strong> Please update your password on your profile page . <a class="text-white" href="public/user/profile">Click here to update</a>
+    <strong>Alert!</strong> Please update your password on your profile page . <a class="text-white" href="profile">Click here to update</a>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -135,14 +135,14 @@
             <div class="row">
               <div class="col">
 
-                <div> <a href="public/user/device" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('Buy Log') }}</a>
+                <div> <a href="device" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('Buy Log') }}</a>
                 </div>
 
               </div>
 
               <div class="col">
 
-                <div> <a href="public/user/logs" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('View Log') }}</a>
+                <div> <a href="logs" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('View Log') }}</a>
               
                 </div>
 
