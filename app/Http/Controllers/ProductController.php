@@ -83,12 +83,14 @@ class ProductController extends Controller
     public function buyNow(request $request){
 
 
+        $amount = $request->amount;
+
+        if($amount == null || $amount == 0){
+            return back()->with('error', 'Please wait try reload your browser and try again');
+        }
 
 
          $usr = User::where('id', Auth::id())->first() ?? null;
-
-
-
 
          $get_user_Wallet = User::where('id', Auth::id())->first()->wallet;
 
