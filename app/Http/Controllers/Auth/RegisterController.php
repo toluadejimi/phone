@@ -67,30 +67,16 @@ class RegisterController extends Controller
         }
 
 
-        $name = $request->name;
-        $bank_name = "PROVIDUS BANK";
-        $cc = create_v_account($name);
-        $status = $cc[0]['status'] ?? null;
-
-        if($status == true){
-
             $usr = new User();
             $usr->name = $name;
             $usr->email = $request->email;
             $usr->password = Hash::make($request->password);
-            $usr->bank_name = $bank_name;
-            $usr->account_name = $cc[0]['account_name'] ?? null;
-            $usr->account_number = $cc[0]['account_no'] ?? null;
             $usr->save();
 
 
             return redirect('/login')->with('message', 'Account has been created Successfully');
 
-        }
-
-        $message = "Error Creating VIRTUAL Account on IBDLOADED";
-
-        send_notification($message);
+      
 
 
      
