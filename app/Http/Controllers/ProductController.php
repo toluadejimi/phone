@@ -57,6 +57,10 @@ class ProductController extends Controller
 
                 User::where('id', Auth::id())->increment('wallet', $amount);
                 Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
+
+                $message =  Auth::user()->name "| funding successful |". number_format($amount, 2);
+                send_notification($message);
+
                 return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
             }
         }
@@ -106,8 +110,9 @@ class ProductController extends Controller
 
             $pr = ItemLog::where('id', $request->area_code)->first();
 
+            $trx_ref = "TRX - " . random_int(1000000, 9999999);
             $trx = new Transaction();
-            $trx->trx_ref = "TRX - " . random_int(1000000, 9999999);
+            $trx->trx_ref = $trx_ref;
             $trx->user_id = Auth::id();
             $trx->amount = $pr->price;
             $trx->type = 1;
@@ -130,6 +135,10 @@ class ProductController extends Controller
             $order->amount = $pr->price;
             $order->save();
 
+            $name = User::where('id', Auth::id())->first()->name;
+
+            $message = Auth::user()->name. " | just bought log with refrence | ".$trx_ref;
+            send_notification($message);
 
             ItemLog::where('id', $request->area_code)->delete();
 
