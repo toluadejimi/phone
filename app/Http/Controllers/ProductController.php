@@ -98,6 +98,14 @@ class ProductController extends Controller
         }
 
 
+        if($amount_of_product > $get_user_Wallet){
+
+            return back()->with('error', "Insufficient Balance, Fund your wallet");
+
+        }
+
+
+
 
         $pr = ItemLog::where('id', $request->area_code)->first();
 
