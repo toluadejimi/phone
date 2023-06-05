@@ -92,7 +92,7 @@ class ProductController extends Controller
         $get_user_Wallet = User::where('id', Auth::id())->first()->wallet ?? null;
 
 
-        if ($get_user_Walle == null) {
+        if ($get_user_Wallet == null) {
             return back()->with('error', 'Please wait try reload your browser and try again');
         }
 
