@@ -89,6 +89,15 @@ class ProductController extends Controller
 
         $amount = $request->amount ?? 0;
 
+
+        if ($amount > Auth::user()->wallet) {
+            return redirect('user/dashboard')->with('error', "Insufficient Balance, Fund your wallet");
+        }
+
+        if ($amount > Auth::user()->wallet) {
+            return redirect('user/dashboard')->with('error', "Insufficient Balance, Fund your wallet");
+        }
+
         if ($amount == null || $amount == 0) {
             return back()->with('error', 'Please wait try reload your browser and try again');
         }
@@ -104,12 +113,12 @@ class ProductController extends Controller
         }
 
 
-        if ($amount > $get_user_Wallet) {
 
+        if ($amount >= $get_user_Wallet) {
             return redirect('user/dashboard')->with('error', "Insufficient Balance, Fund your wallet");
         } else {
 
-            User::where('id', Auth::id())->decrement('wallet', $request->amount);
+            User::where('id', Auth::id())->decrement('wallet', $amount);
 
             $pr = ItemLog::where('id', $request->area_code)->first();
 
@@ -138,7 +147,6 @@ class ProductController extends Controller
             $order->amount = $pr->price;
             $order->save();
 
-            $name = User::where('id', Auth::id())->first()->name;
 
             $message = Auth::user()->name. " | just bought log with refrence | ".$trx_ref;
             send_notification($message);
