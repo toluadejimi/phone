@@ -99,7 +99,7 @@ class ProductController extends Controller
 
         if ($amount > $get_user_Wallet) {
 
-            return back()->with('error', "Insufficient Balance, Fund your wallet");
+            return redirect('user/dashboard')->with('error', "Insufficient Balance, Fund your wallet");
         } else {
 
             User::where('id', Auth::id())->decrement('wallet', $request->amount);
