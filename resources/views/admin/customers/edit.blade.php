@@ -36,9 +36,9 @@
                     </div>
                 </div>
                 <div class="from-group row mt-2">
-                    <label class="col-lg-12">{{ __('Phone') }}</label>
+                    <label class="col-lg-12">{{ __('Wallet') }}</label>
                     <div class="col-lg-12">
-                        <input type="text" name="phone"  class="form-control" value="{{ $customer->phone }}">
+                        <input type="text" name="wallet"  class="form-control" value="{{ $customer->wallet }}">
                     </div>
                 </div>
                 <div class="from-group row mt-2">

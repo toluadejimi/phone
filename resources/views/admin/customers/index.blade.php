@@ -122,9 +122,8 @@
 						<tr>
 							<th class="col-1">{{ __('Name') }}</th>
 							<th class="col-4">{{ __('Email') }}</th>
-							<th class="col-2">{{ __('Plan') }}</th>
-							<th class="col-1">{{ __('Orders') }}</th>
-							<th class="col-1">{{ __('Expire Date') }}</th>
+							<th class="col-1">{{ __('Wallet') }}</th>
+							<th class="col-1">{{ __('Phone') }}</th>
 							<th class="col-1">{{ __('Status') }}</th>
 							<th class="col-1 text-left">{{ __('Created At') }}</th>
 							<th class="col-1 text-left">{{ __('Action') }}</th>
@@ -145,15 +144,13 @@
 								</a>
 							</td>
 							<td>
-	       						{{ $customer->subscription->title ?? '' }}
+	       						{{ number_format($customer->wallet, 2 )?? '' }}
 							</td>
 
 							<td class="text-center">
-								{{ number_format($customer->orders_count) }}
+								{{ number_format($customer->phone) }}
 							</td>
-							<td class="text-center">
-								{{ $customer->will_expire }}
-							</td>
+						
 							<td>
 								<span class="badge badge-{{ $customer->status == 1 ? 'success' : 'danger' }}">
 									{{ $customer->status == 1 ? 'Active' : 'Suspended' }}

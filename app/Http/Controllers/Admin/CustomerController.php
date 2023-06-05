@@ -93,7 +93,7 @@ class CustomerController extends Controller
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->status = $request->status;
-        $customer->phone = $request->phone;
+        $customer->wallet = $request->wallet;
         $customer->address = $request->address;
         if ($request->password) {
             $customer->password = Hash::make($request->password);
