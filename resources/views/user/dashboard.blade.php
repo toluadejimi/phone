@@ -52,18 +52,18 @@
 
 <div class="row">
 
-  <div class="col-xl-12 col-md-6">
+  <div class="col-xl-12">
     <div class="card card-stats">
       <!-- Card body -->
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h2 class="card-title text-uppercase  mb-4">{{ __('Fund your Account') }}</h2>
+            <h3 class="card-title text-uppercase  mb-4">{{ __('Fund your Account') }}</h3>
 
             <form action="/user/fund-wallet" action="post">
               @csrf
 
-              <div class="col-6">
+              <div class="col-lg-6">
               <label>Enter amount to fund (NGN)</label>
               <input type="number"  class="form-control my-3" placeholder="Min 100 | Max 1,000,000" name="amount" required autofocus>
 

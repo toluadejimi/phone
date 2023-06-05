@@ -23,7 +23,7 @@ class ProductController extends Controller
         $key = env('WEBKEY');
         $ref= "FUD-".random_int(100000, 999999);
 
-        $url = "http://localhost:8001/pay?amount=$request->amount&key=$key&ref=$ref";
+        $url = "https://web.enkpay.com/pay?amount=$request->amount&key=$key&ref=$ref";
 
 
         $trx= new Transaction();
