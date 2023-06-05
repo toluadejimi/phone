@@ -91,14 +91,14 @@ class ProductController extends Controller
 
          $get_user_Wallet = User::where('id', Auth::id())->first()->wallet;
 
-        if($amount_of_product > $get_user_Wallet){
+        if($amount_of_product < $get_user_Wallet){
 
             return back()->with('error', "Insufficient Balance, Fund your wallet");
 
         }
 
 
-        if($amount_of_product > $get_user_Wallet){
+        if($amount_of_product < $get_user_Wallet){
 
             return back()->with('error', "Insufficient Balance, Fund your wallet");
 
