@@ -228,7 +228,7 @@
             </div>
          </div>
 
-         <div class="col-xl-6 col-md-6">
+         {{-- <div class="col-xl-6 col-md-6">
 
 
             <div class="card card-stats">
@@ -346,7 +346,7 @@
             </div>
 
 
-         </div>
+         </div> --}}
 
       </div>
 
