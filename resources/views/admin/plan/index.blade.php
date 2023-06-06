@@ -43,7 +43,7 @@
 						<div class="row">
 							<div class="col">
 								<span class="h2 font-weight-bold mb-0 total-transfers" id="total-active">
-									{{ $tNF }}
+									{{ $tDGV }}
 								</span>
 							</div>
 							<div class="col-auto">
@@ -53,7 +53,7 @@
 							</div>
 						</div>
 						<p class="mt-3 mb-0 text-sm">
-						</p><h5 class="card-title  text-muted mb-0">{{ __('Netflix') }}</h5>
+						</p><h5 class="card-title  text-muted mb-0">{{ __('Domain Gv') }}</h5>
 						<p></p>
 					</div>
 				</div>
@@ -79,7 +79,29 @@
 					</div>
 				</div>
 			</div>
-		>
+
+			<div class="col">
+				<div class="card card-stats">
+					<div class="card-body">
+						<div class="row">
+							<div class="col">
+								<span class="h2 font-weight-bold mb-0 completed-transfers" id="total-inactive">
+									{{ $tTK }}
+								</span>
+							</div>
+							<div class="col-auto">
+								<div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
+									<i class="fi fi-rs-time-forward mt-2"></i>
+								</div>
+							</div>
+						</div>
+						<p class="mt-3 mb-0 text-sm">
+						</p><h5 class="card-title  text-muted mb-0">{{ __('Talkatone') }}</h5>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		
 		</div>
 	</div>
 </div>    
