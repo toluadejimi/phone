@@ -26,7 +26,7 @@
       @endif
       @if (session()->has('message'))
       <div class="alert alert-success">
-          {{ session()->get('message') }}
+          {{ session()->get('message') }} Check your Gmail spam folder and report as not a spam
       </div>
       @endif
       @if (session()->has('error'))
@@ -43,7 +43,7 @@
       <div class="col">
         <h5 class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
 
-        <p> Welcome to Oprime, Rent all types of phone numbers </p>
+        <p> Welcome to Oprime, Buy all logs at an affordable price </p>
       </div>
       <div class="col-auto">
         <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
@@ -77,7 +77,7 @@
 
            <button
 
-                class="btn btn-neutral my-3"><i class="fas fa-pay"></i> {{ __('Pay Now') }}
+                class="btn btn-neutral my-3"><i class="fas fa-pay"></i> {{ __('Deposit Now') }}
                 
          
                 
@@ -142,7 +142,7 @@
 
               <div class="col">
 
-                <div> <a href="logs" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('View Log') }}</a>
+                <div> <a href="logs" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('My Logs') }}</a>
               
                 </div>
 

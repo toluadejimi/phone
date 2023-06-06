@@ -9,15 +9,35 @@
   <li class="nav-item">
     <a class="nav-link {{ Request::is('user/device*') ? 'active' : '' }}" href="{{ route('user.device.index') }}">
       <i class="fi-rs-sensor-on"></i>
-      <span class="nav-link-text">{{ __('Buy Log') }}</span>
+      <span class="nav-link-text">{{ __('Buy Logs') }}</span>
+    </a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link {{ Request::is('user/dashboard*') ? 'active' : '' }}" href="{{ route('user.dashboard.index') }}">
+     <i class="fi fi-rs-dashboard"></i>
+      <span class="nav-link-text">{{ __('Deposit') }}</span>
+    </a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('https://oprimestore.com') }}">
+      <i class="fi fi-rs-paper-plane"></i>
+      <span class="nav-link-text">{{ __('Buy Airtime/Data') }}</span>
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('user/logs') }}">
       <i class="fi fi-rs-paper-plane"></i>
-      <span class="nav-link-text">{{ __('View Logs') }}</span>
+      <span class="nav-link-text">{{ __('My Logs') }}</span>
     </a>
   </li>
+ 
+    <li class="nav-item">
+    <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('https://wa.me/2348169581573?text=hi') }}">
+      <i class="fi fi-rs-paper-plane"></i>
+      <span class="nav-link-text">{{ __('Get Website') }}</span>
+    </a>
+  </li>
+
  {{-- <li class="nav-item">
     <a class="nav-link {{ Request::is('user/chatbot*') ? 'active' : '' }}" href="{{ route('user.chatbot.index') }}">
       <i class="fas fa-robot"></i>

@@ -42,7 +42,7 @@
                  
                   <h5 class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
 
-                  <p> Buy Google Voice, Netflix, Text-Now etc logs now</p>
+                  <p> Buy Google Voice, Talkatone, Text-Now etc logs now</p>
                </div>
                <div class="col-auto">
                   <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
@@ -65,7 +65,7 @@
                <!-- Card body -->
                <div class="card-body">
 
-                  <h4 class=" mb-5 my-3">Buy TextNow / Google Voice Log</h4>
+                  <h4 class=" mb-5 my-3">Buy Google Voice/ Textnow & Talkatone Log</h4>
 
 
                   <form action="buy-now" method="post">
@@ -355,7 +355,20 @@
    </div>
 
 
-
+   <div class="mt-4 alert alert-success">
+                                                Note: Buy clicking on buy you have agreed with our terms of service / Replacemnt.
+                                                <br>
+                                                <br>
+                                                Terms: All logs been uploaded to our platform is been tested before uploaded, therefore we only replace logs that the password is incorrect. Replacement is been done within 1 hour of the logs in your hands.
+                                                <br>
+                                                <br>
+                                                Logs we replace: Gmail Google voice,  TEXTNOW, Domain Google voice, Talkatone 
+                                                <br>
+                                                <br>
+                                                Knowledge: If you get a TEXTNOW logs, try to login directly from the TEXTNOW App or Login using Google account.
+                                                <br>
+                                                If your Gmail google voice get disabled, kindly request a review from Google they will unblock it for you within 1 to 2 days
+                                            </div>
 
 </div>
 
