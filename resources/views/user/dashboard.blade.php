@@ -43,7 +43,7 @@
       <div class="col">
         <h5 class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
 
-        <p> Welocme to Oprime, Rent all types of phone numbers </p>
+        <p> Welcome to Oprime, Rent all types of phone numbers </p>
       </div>
       <div class="col-auto">
         <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
