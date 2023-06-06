@@ -62,6 +62,33 @@ class ProductController extends Controller
                 $message =  Auth::user()->name. "| funding successful |". number_format($amount, 2);
                 send_notification($message);
 
+
+                $usr = User::where('id', Auth::id())->first() ?? null;
+
+                if($usr->email != null){
+
+                    $data = array(
+                        'fromsender' => 'admin@oprime.com.ng', 'Oprime',
+                        'subject' => "Wallet Funded",
+                        'toreceiver' => Auth::user()->email,
+                        'amount' => $amount,
+                        'name' => Auth::user()->name,
+    
+    
+    
+                    );
+    
+    
+                    Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
+                        $message->from($data['fromsender']);
+                        $message->to($data['toreceiver']);
+                        $message->subject($data['subject']);
+                    });
+
+                }
+
+              
+
                 return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
             }
         }
