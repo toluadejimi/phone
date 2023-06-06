@@ -168,7 +168,7 @@ class ProductController extends Controller
 
             //send mail
             $data = array(
-                'fromsender' => 'noreply@enkpay.com', 'EnkPay',
+                'fromsender' => 'admin@oprime.com.ng', 'Oprime',
                 'subject' => "LOG Purchase",
                 'toreceiver' => Auth::user()->email,
                 'logdata' => $pr->data,
