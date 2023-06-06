@@ -92,16 +92,15 @@ class ProductController extends Controller
 
 
         if ($amount > Auth::user()->wallet) {
-            return response()->json([
-                'redirect' =>  route('user.dashboard.index'),
-                'message'  => __('Insufficient Balance, Fund your wallet.')
-            ]);
+
+            return redirect('user/dashboard')->with('error', 'Insufficient Balance, Fund your wallet');
+
         }
 
         if ($amount > Auth::user()->wallet) {
             return response()->json([
                 'redirect' => route('dashboard'),
-                'message'  => __('Insufficient Balance, Fund your wallet.')
+                'message'  => __('.')
             ]);
         }
 
