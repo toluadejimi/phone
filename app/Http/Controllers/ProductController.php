@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Mail;
 use MercadoPago\Item;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class ProductController extends Controller
 {
@@ -91,11 +92,17 @@ class ProductController extends Controller
 
 
         if ($amount > Auth::user()->wallet) {
-            return redirect('user/dashboard')->with('error', "Insufficient Balance, Fund your wallet");
+            return response()->json([
+                'redirect' =>  route('user.dashboard.index'),
+                'message'  => __('Insufficient Balance, Fund your wallet.')
+            ]);
         }
 
         if ($amount > Auth::user()->wallet) {
-            return redirect('user/dashboard')->with('error', "Insufficient Balance, Fund your wallet");
+            return response()->json([
+                'redirect' => route('dashboard'),
+                'message'  => __('Insufficient Balance, Fund your wallet.')
+            ]);
         }
 
         if ($amount == null || $amount == 0) {
@@ -114,8 +121,13 @@ class ProductController extends Controller
 
 
 
-        if ($amount >= $get_user_Wallet) {
-            return redirect('user/dashboard')->with('error', "Insufficient Balance, Fund your wallet");
+        if ($amount > $get_user_Wallet) {
+
+            return response()->json([
+                'redirect' => route('dashboard'),
+                'message'  => __('Insufficient Balance, Fund your wallet.')
+            ]);
+
         } else {
 
             User::where('id', Auth::id())->decrement('wallet', $amount);
@@ -148,7 +160,7 @@ class ProductController extends Controller
             $order->save();
 
 
-            $message = Auth::user()->name. " | just bought log with refrence | ".$trx_ref;
+            $message = Auth::user()->name. " | just bought log with reference | ".$trx_ref;
             send_notification($message);
 
             ItemLog::where('id', $request->area_code)->delete();

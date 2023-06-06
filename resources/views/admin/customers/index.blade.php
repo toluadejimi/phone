@@ -134,7 +134,7 @@
 						@foreach($customers ?? [] as $customer)
 						<tr>
 							<td class="text-left">
-								<a href="{{ route('admin.customer.show',$customer->id) }}" class="text-dark">
+								<a href="#" class="text-dark">
 									{{ $customer->name }}
 								</a>
 							</td>
