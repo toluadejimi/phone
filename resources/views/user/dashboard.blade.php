@@ -66,7 +66,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h3 class="card-title text-uppercase  mb-4">{{ __('Fund your Account') }}</h3>
+            <h4 class="card-title text-uppercase   my-4">{{ __('Fund your Account') }}</h4>
 
             <form action="/user/fund-wallet" action="post">
               @csrf
@@ -77,7 +77,7 @@
 
            <button
 
-                class="btn btn-neutral my-3"><i class="fas fa-pay"></i> {{ __('Deposit Now') }}
+                class="btn btn-neutral my-3"><i class="fas fa-university"></i> {{ __('Deposit Now') }}
                 
          
                 
@@ -121,7 +121,7 @@
 
 
 
-  <div class="col-xl-5 col-md-6">
+  <div class="col-xl-8 col-md-6">
     <div class="card card-stats">
       <!-- Card body -->
       <div class="card-body">
@@ -133,29 +133,36 @@
 
 
             <div class="row">
-              <div class="col">
+              <div class="col-4">
 
                 <div> <a href="device" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('Buy Log') }}</a>
                 </div>
 
               </div>
 
-              <div class="col">
+              <div class="col-4">
 
-                <div> <a href="logs" class="btn btn-neutral"><i class="fas fa-plus"></i> {{ __('My Logs') }}</a>
+                <div> <a href="logs" class="btn btn-neutral"><i class="fas fa-bars"></i> {{ __('My Logs') }}</a>
               
                 </div>
-
               </div>
+
+                <div class="col-4">
+
+                  <a href="{{ $whatapplink ?? '#' }}" class="btn btn-neutral" target="_blank" ><i class="fa fa-users"></i> {{ __('Join whatsapp group') }}</a>
+                  
+                </div>
+
+           
             </div>
 
 
           </div>
-          <div class="col-auto">
+          {{-- <div class="col-auto">
             <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
               <i class="ni ni-spaceship"></i>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
@@ -338,7 +345,7 @@
               @elseif($trx->type == "2")
               <td><span class="badge rounded-pill bg-success text-white">Credit</span></td>
               @else
-              <td><span class="badge rounded-pill bg-warning">Pending</span></td>
+              <td><span class="badge rounded-pill bg-warning text-white">Pending</span></td>
               @endif
 
               @if($trx->status == "2")
@@ -346,7 +353,7 @@
               @elseif($trx->status == "1")
               <td><span class="badge rounded-pill bg-success text-white">Successful</span></td>
               @else
-              <td><span class="badge rounded-pill bg-warning">Pending</span></td>
+              <td><span class="badge rounded-pill bg-warning text-white">Pending</span></td>
               @endif
 
 

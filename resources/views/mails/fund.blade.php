@@ -5,7 +5,7 @@ Hi {{ $data1['name'] }},<br><br>
 {{ __('We like to inform you that your wallet has been funded') }}
 <br><br>
 {{ __('Amount') }} <br>
-<strong>{{ $data1['amount'] }}</strong>.<br><br>
+<strong>NGN {{ $data1['amount'] }}</strong>.<br><br>
 
 
 

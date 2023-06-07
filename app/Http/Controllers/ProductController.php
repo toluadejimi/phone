@@ -96,6 +96,9 @@ class ProductController extends Controller
 
         if ($status == 'failed') {
 
+            Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 2]);
+
+
             $message =  Auth::user()->name. "| canceled funding |";
             send_notification($message);
 

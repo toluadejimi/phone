@@ -104,6 +104,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Order');
     }
 
+
+    public function transaction()
+    {
+        return $this->hasMany('App\Models\Transaction');
+    }
+
     public function smstransaction()
     {
         return $this->hasMany('App\Models\Smstransaction');

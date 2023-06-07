@@ -10,6 +10,7 @@ use App\Models\Device;
 use App\Models\Smstransaction;
 use App\Models\Schedulemessage;
 use App\Models\Contact;
+use App\Models\Link;
 use Carbon\Carbon;
 use Auth;
 use Session;
@@ -27,8 +28,9 @@ class DashboardController extends Controller
         $c_logs = Sold::where('user_id', Auth::id())->count();
 
 
+        $whatapplink = Link::where('name', 'whatsapp')->first()->data ?? null; 
        
-        return view('user.dashboard', compact('transactions', 'c_logs', 'tc_log', 'request'));
+        return view('user.dashboard', compact('transactions', 'whatapplink', 'c_logs', 'tc_log', 'request'));
     }
 
     public function dashboardData()

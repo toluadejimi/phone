@@ -167,7 +167,6 @@
 										<i class="fas fa-ellipsis-v"></i>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-										<a class="dropdown-item" href="{{ route('admin.customer.show',$customer->id) }}">{{ __('View') }}</a>
 										<a class="dropdown-item" href="{{ route('admin.customer.edit',$customer->id) }}">{{ __('Edit') }}</a>
 										<a class="dropdown-item delete-confirm" href="#" data-action="{{ route('admin.customer.destroy',$customer->id) }}">{{ __('Remove') }}</a>
 										

@@ -263,7 +263,7 @@
 							@elseif($trx->status == "1")
 							<td><span class="badge rounded-pill bg-success text-white">Successful</span></td>
 							@else
-							<td><span class="badge rounded-pill bg-warning">Pending</span></td>
+							<td><span class="badge rounded-pill bg-warning text-white">Pending</span></td>
 							@endif
 
 
