@@ -74,6 +74,8 @@
               <div class="col-lg-6">
               <label>Enter amount to fund (NGN)</label>
               <input type="number"  class="form-control my-3" placeholder="Min 100 | Max 1,000,000" name="amount" required autofocus>
+              <input type="text"  hidden  name="email" value="{{ Auth::user()->email }}" autofocus>
+
 
            <button
 
