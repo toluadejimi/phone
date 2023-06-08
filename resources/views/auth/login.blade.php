@@ -30,11 +30,11 @@
       <div class="tp-login-area">
          <div class="container-fluid p-0">
             <div class="row gx-0 align-items-center">
-               <div class="col-xl-6 col-lg-6 col-12">
+              <!-- <div class="col-xl-6 col-lg-6 col-12">
                   <div class="tp-login-thumb login-space sky-bg d-flex justify-content-center">
                      <img src="{{ asset('assets/frontend/img/contact/login.jpg') }}" alt="">
                   </div>
-               </div>
+               </div> -->
                
 
                <div class="col-xl-6 col-lg-6 col-12">
