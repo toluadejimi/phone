@@ -33,6 +33,8 @@
 									<th>{{ __('Email') }}</th>
 									<th>{{ __('Status') }}</th>
 									<th>{{ __('Role') }}</th>
+									<th>{{ __('time') }}</th>
+
 									<th class="text-right">{{ __('Action') }}</th>
 								</tr>
 							</thead>
@@ -66,3 +68,5 @@
 		</div>
 	</div>
 	@endsection
+
+	
