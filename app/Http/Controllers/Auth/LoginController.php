@@ -37,15 +37,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    protected function credentials(Request $request)
-    {
-        $credentials = $request->only($this->username(), 'password');
-        $credentials['email_verified_at'] = !is_null($request->user()) ? null : now();
-    
-        return $credentials;
-    }
-    
     public function redirectTo()
     {
         if (Auth::user()->role == 'user') {
