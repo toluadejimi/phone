@@ -26,7 +26,7 @@
       @endif
       @if (session()->has('message'))
       <div class="alert alert-success">
-          {{ session()->get('message') }} Check your Gmail spam folder and report as not a spam
+          {{ session()->get('message') }} 
       </div>
       @endif
       @if (session()->has('error'))
