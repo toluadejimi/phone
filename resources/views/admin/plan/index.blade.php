@@ -89,6 +89,7 @@
 									{{ $tTK }}
 								</span>
 							</div>
+							
 							<div class="col-auto">
 								<div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
 									<i class="fi fi-rs-time-forward mt-2"></i>

@@ -29,10 +29,11 @@ class PlanController extends Controller
        $tGV=ItemLog::where('item_id', 1)->count();
        $tDGV=ItemLog::where('item_id', 3)->count();
        $tTK=ItemLog::where('item_id', 4)->count();
+       $tEV=ItemLog::where('item_id', 6)->count();
 
 
 
-       return view('admin.plan.index',compact('item_logs','tNF', 'tDGV',  'tTK', 'tTN', 'request', 'tGV'));
+       return view('admin.plan.index',compact('item_logs','tNF', 'tDGV',  'tTK', 'tTN','tEV', 'request', 'tGV'));
     }
 
     /**

@@ -8,6 +8,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','ad
 	Route::resource('gv', 	     			    ADMIN\GVPlanController::class);
 	Route::resource('tn', 	     			    ADMIN\TNPlanController::class);
 	Route::resource('nf', 	     			    ADMIN\NFPlanController::class);
+	Route::resource('ev', 	     			    ADMIN\EVPlanController::class);
 
 	Route::resource('role', 	     			ADMIN\RoleController::class);
 	Route::resource('admin', 	     			ADMIN\AdminController::class);
