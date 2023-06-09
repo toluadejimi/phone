@@ -1,7 +1,11 @@
 <?php 
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\CreditUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin as ADMIN;
+Route::get('migrate', function () {
+    Artisan::call('migrate');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','admin']], function (){
 
