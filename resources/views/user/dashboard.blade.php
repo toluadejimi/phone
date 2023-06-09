@@ -369,7 +369,7 @@
 
 
               <td class="">
-                {{ $trx->created_at->format('d F y') }}
+                {{ $trx->created_at->format('d F y H i s') }}
               </td>
             </tr>
             @endforeach
