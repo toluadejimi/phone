@@ -80,6 +80,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth','user
    Route::resource('chatbot',                             USER\ChatbotController::class);
    //log report route
    Route::resource('logs',                                USER\LogController::class);
+ 
    //profile settings
    Route::get('profile',                                 [USER\ProfileController::class,'settings']);
    Route::put('profile/update/{type}',                   [USER\ProfileController::class,'update'])->name('profile.update');

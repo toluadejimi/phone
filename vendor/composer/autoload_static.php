@@ -437,8 +437,8 @@ class ComposerStaticInit24708c582cf01b0a26e7e18a6581d84a
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -592,8 +592,8 @@ class ComposerStaticInit24708c582cf01b0a26e7e18a6581d84a
         ),
         'Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
-            1 => __DIR__ . '/..' . '/php-http/message/src',
+            0 => __DIR__ . '/..' . '/php-http/message/src',
+            1 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
         'Http\\Discovery\\' => 
         array (
@@ -877,12 +877,14 @@ class ComposerStaticInit24708c582cf01b0a26e7e18a6581d84a
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Categorymeta' => __DIR__ . '/../..' . '/app/Models/Categorymeta.php',
         'App\\Models\\Contact' => __DIR__ . '/../..' . '/app/Models/Contact.php',
+        'App\\Models\\Credit' => __DIR__ . '/../..' . '/app/Models/Credit.php',
         'App\\Models\\Device' => __DIR__ . '/../..' . '/app/Models/Device.php',
         'App\\Models\\Deviceorder' => __DIR__ . '/../..' . '/app/Models/Deviceorder.php',
         'App\\Models\\Gateway' => __DIR__ . '/../..' . '/app/Models/Gateway.php',
         'App\\Models\\Group' => __DIR__ . '/../..' . '/app/Models/Group.php',
         'App\\Models\\Groupcontact' => __DIR__ . '/../..' . '/app/Models/Groupcontact.php',
         'App\\Models\\ItemLog' => __DIR__ . '/../..' . '/app/Models/ItemLog.php',
+        'App\\Models\\Link' => __DIR__ . '/../..' . '/app/Models/Link.php',
         'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
         'App\\Models\\NetLog' => __DIR__ . '/../..' . '/app/Models/NetLog.php',
         'App\\Models\\NetflixProduct' => __DIR__ . '/../..' . '/app/Models/NetflixProduct.php',

@@ -29,6 +29,15 @@
     </a>
   </li>
 
+
+  <li class="nav-item">
+    <a class="nav-link {{ Request::is('admin/credit*') ? 'active' : '' }}" href="{{ route('admin.credit') }}">
+     <i class="fi fi-rs-users-alt"></i>
+      <span class="nav-link-text">{{ __('Credit') }}</span>
+    </a>
+  </li>
+
+
  
   
   <li class="nav-item">

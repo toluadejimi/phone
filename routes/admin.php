@@ -1,14 +1,18 @@
 <?php 
+use App\Http\Controllers\Admin\CreditUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin as ADMIN;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','admin']], function (){
 
 	Route::resource('plan', 	     			ADMIN\PlanController::class);
+	
 	Route::resource('gv', 	     			    ADMIN\GVPlanController::class);
 	Route::resource('tn', 	     			    ADMIN\TNPlanController::class);
 	Route::resource('nf', 	     			    ADMIN\NFPlanController::class);
 
+	Route::get('/credit',				  [  ADMIN\CreditUserController::class, 'index'])->name('credit');
+	Route::post('/credit',				  [  ADMIN\CreditUserController::class, 'store'])->name('credit');
 	Route::resource('role', 	     			ADMIN\RoleController::class);
 	Route::resource('admin', 	     			ADMIN\AdminController::class);
 	Route::resource('order', 	     			ADMIN\OrderController::class);
@@ -50,6 +54,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','ad
 	Route::get('dashboard-static-data',         [ADMIN\DashboardController::class, 'dashboardData'])->name('dashboard.static');
 	Route::get('/wa-server-status',				[ADMIN\DashboardController::class, 'waServerStatus']);
 	Route::get('/sales-overview',				[ADMIN\DashboardController::class, 'salesOverView']);
+	
 
 });
 
