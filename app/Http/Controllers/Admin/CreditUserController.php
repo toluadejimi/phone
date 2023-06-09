@@ -49,7 +49,7 @@ class CreditUserController extends Controller
         Mail::to($request->email)->send(new Creditmail($details));
         return back()->with('success','wallet funded');
         
-    }
+    }  
 
         else{
             return back()->with('error','user not found');
