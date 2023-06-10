@@ -152,7 +152,7 @@
 							
 						
 							<td class="text-left">
-								{{ $data->created_at->format('d F y') }}
+								{{ $data->created_at->format('d F y H i s') }}
 							</td>
 							
 						</tr>
