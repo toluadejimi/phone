@@ -45,6 +45,8 @@
 
         <p> Welcome to Oprime, Buy all logs at an affordable price </p>
       </div>
+
+
       <div class="col-auto">
         <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
           <i class="fas fa-server"></i>
@@ -54,7 +56,6 @@
   </div>
 </div>
   
-
 
 
 
@@ -102,11 +103,20 @@
             
             </form>
 
-             
-
+    
 
 
           </div>
+          <br>
+          <br>
+          <div>
+            <div>
+              <br>
+              <br>
+            </div>
+    <button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://chat.whatsapp.com/KSh1zHhSeew4WXKsWU1slP">CLICK HERE TO JOIN OUR WHATSAPP GROUP</a></button>
+</div>
+
           <div class="col-auto">
             <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
               <i class="fas fa-server"></i>
