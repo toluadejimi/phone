@@ -29,6 +29,13 @@
     </a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link {{ Request::is('admin/send-mail*') ? 'active' : '' }}" href="{{ route('admin.mail') }}">
+     <i class="fi fi-rs-users-alt"></i>
+      <span class="nav-link-text">{{ __('Send Mail') }}</span>
+    </a>
+  </li>
+
 
   <li class="nav-item">
     <a class="nav-link {{ Request::is('admin/credit*') ? 'active' : '' }}" href="{{ route('admin.credit') }}">

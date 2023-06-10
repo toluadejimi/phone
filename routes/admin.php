@@ -17,6 +17,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','ad
 
 	Route::get('/credit',				  [  ADMIN\CreditUserController::class, 'index'])->name('credit');
 	Route::post('/credit',				  [  ADMIN\CreditUserController::class, 'store'])->name('credit');
+	Route::get('/send-mail',				  [  ADMIN\AdminMailUserController::class, 'index'])->name('mail');
+	Route::post('/send-mail',				  [  ADMIN\AdminMailUserController::class, 'sendMail'])->name('mail');
 	Route::resource('role', 	     			ADMIN\RoleController::class);
 	Route::resource('admin', 	     			ADMIN\AdminController::class);
 	Route::resource('order', 	     			ADMIN\OrderController::class);
