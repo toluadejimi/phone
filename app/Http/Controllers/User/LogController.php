@@ -18,7 +18,7 @@ class LogController extends Controller
     public function index(request $request)
     {
         
-        $solds = Sold::where('user_id', Auth::id())->paginate('10');
+        $solds = Sold::where('user_id', Auth::id())->latest()->paginate('10');
         $total_sold = Sold::where('user_id', Auth::id())->count();
         $total_amount = Sold::where('user_id', Auth::id())->sum('amount');
 

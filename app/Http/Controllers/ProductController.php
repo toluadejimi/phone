@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminMail;
 use App\Models\ItemLog;
 use App\Models\Order;
 use App\Models\Product;
@@ -10,6 +11,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail as FacadesMail;
 use Illuminate\Support\Facades\Redirect;
 use Mail;
 use MercadoPago\Item;
@@ -160,7 +162,7 @@ class ProductController extends Controller
 
         } else {
 
-            User::where('id', Auth::id())->decrement('wallet', $amount);
+                User::where('id', Auth::id())->decrement('wallet', $amount);
 
             $pr = ItemLog::where('id', $request->area_code)->first();
 
@@ -211,6 +213,7 @@ class ProductController extends Controller
             );
 
 
+
             Mail::send('mails.log', ["data1" => $data], function ($message) use ($data) {
                 $message->from($data['fromsender']);
                 $message->to($data['toreceiver']);
@@ -218,9 +221,27 @@ class ProductController extends Controller
             });
 
 
+        
+                $details = [
+                    'subject' => 'Something bought',
+                    'name' => $data['toreceiver'],
+                    'data'=> $data['logdata']
+                    ];
+                    
+
+
+      
+            FacadesMail::to('yekeenoluwaseun0001@gmail.com')->send(
+                new AdminMail($details)
+
+
+            );
+            }
+            
+
+
 
             return redirect('user/dashboard')->with('message', "Log purchase successful");
-        }
 
 
         return back()->with('error', "Insufficient Balance, Fund your wallet");

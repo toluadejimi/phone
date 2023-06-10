@@ -6,7 +6,7 @@ use App\Http\Controllers\ProductController;
 
 
 
-Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth','user']], function (){
+Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth','user',]], function (){
    
    //all dashboard routes
    Route::get('dashboard',                       [USER\DashboardController::class, 'index'])->name('dashboard.index');

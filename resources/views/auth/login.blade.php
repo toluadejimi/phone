@@ -104,7 +104,7 @@
                               </div>
                               <div class="tp-signup d-flex justify-content-between">
                                  <div class="account">
-                                    <a href="{{ url('/pricing') }}">{{ __('Dont have an account?') }}</a>
+                                    <a href="{{ url('/register') }}">{{ __('Dont have an account?') }}</a>
                                  </div>
                                  <div class="signin">
                                     <a href="{{ url('/register') }}">{{ __('Sign up now') }}</a>

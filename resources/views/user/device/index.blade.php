@@ -109,6 +109,7 @@
                            <select id="city-dropdown" required name="amount" class="form-control">
                            </select>
                         </div>
+                        
 
                      </div>
 
@@ -117,7 +118,7 @@
 
                         <div class="form-group mb-3">
                            <label>Quantity</label>
-                           <input type="number" name="qty" id="qty" value="1" required class="form-control">
+                           <input type="number" name="qty[]" id="qty" value="1" required class="form-control">
                            </select>
                         </div>
 
@@ -125,7 +126,7 @@
 
                      <div class="col-xl-6 col-md-6">
 
-                        {{-- <div class="my-1">
+                       {{-- <div class="my-1">
                            <p >Total Price: <strong id="totalPrice">NGN 0</strong></p>
                         </div> --}}
 
