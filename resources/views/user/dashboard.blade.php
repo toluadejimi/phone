@@ -95,6 +95,15 @@
 
 
               <p>Fund your account instantly</p>
+<br>
+
+              <button style="color:white; border:none; border-radius:20px; padding: 15px; background-color: red;" class="fa fa-users"  type="button"><a href="https:://oprime.com.ng/our-rules">CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU</a></button>
+<br>
+<br>
+<marquee><button style="color:white; border:none; border-radius:20px; padding: 15px; background-color: red;" class="fa fa-users"  type="button"><a href="https:://oprime.com.ng/our-rules">CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU</a></button>
+</marquee>
+
+<br>
               </div>
             
             

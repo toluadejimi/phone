@@ -32,7 +32,7 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link {{ Request::is('user/rules*') ? 'active' : '' }}" href="{{ url('https://oprime.com.ng/rules') }}">
+    <a class="nav-link {{ Request::is('user/rules*') ? 'active' : '' }}" href="{{ url('https://oprime.com.ng/our-rules') }}">
       <i class="fi fi-rs-paper-plane"></i>
       <span class="nav-link-text">{{ __('Our Rules') }}</span>
     </a>
