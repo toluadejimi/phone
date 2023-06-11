@@ -93,6 +93,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth','user
    Route::get('/subscription/plan/{status}',             [USER\SubscriptionController::class,'status']);
    Route::get('/subscriptions/log',                      [USER\SubscriptionController::class,'log']);
    Route::resource('notifications',                      USER\NotificationController::class);
+  
 
 });
 

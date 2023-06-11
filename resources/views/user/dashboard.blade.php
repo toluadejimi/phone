@@ -97,11 +97,16 @@
               <p>Fund your account instantly</p>
 <br>
 
-              <button style="color:white; border:none; border-radius:20px; padding: 15px; background-color: red;" class="fa fa-users"  type="button"><a href="https:://oprime.com.ng/our-rules">CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU</a></button>
+              <button style="color:white; border:none; border-radius:20px; padding: 8px; background-color: red;"  type="button">  <a style="color: #E5F7FE;" class="nav-link {{ Request::is('user/rules*') ? 'active' : '' }}" href="{{ url('https://oprime.com.ng/our-rules') }}">
+      <i class="fi fi-rs-paper-plane"></i>
+      <span class="nav-link-text">{{ __('CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU') }}</span>
+    </a></button>
 <br>
 <br>
-<marquee><button style="color:white; border:none; border-radius:20px; padding: 15px; background-color: red;" class="fa fa-users"  type="button"><a href="https:://oprime.com.ng/our-rules">CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU</a></button>
-</marquee>
+<marquee>              <button style="color:white; border:none; border-radius:20px; padding: 8px; background-color: red;"  type="button">  <a style="color: #E5F7FE;" class="nav-link {{ Request::is('user/rules*') ? 'active' : '' }}" href="{{ url('https://oprime.com.ng/our-rules') }}">
+      <i class="fi fi-rs-paper-plane"></i>
+      <span class="nav-link-text">{{ __('CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU') }}</span>
+    </a></button></marquee>
 
 <br>
               </div>
