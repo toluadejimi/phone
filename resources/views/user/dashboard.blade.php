@@ -138,6 +138,7 @@
 
   </div>
 <br>
+<br>
 
           <div class="col-auto">
             <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
