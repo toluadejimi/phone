@@ -18,6 +18,9 @@ Dear {{ $data1['name'] }},<br><br>
     </a></button>
 
 <br>
+<br>
+<br>
 
-{{ __('Thank You') }} <br>
+{{ __('Thank You') }}
+ <br><br>
 {{ config('app.name') }}
