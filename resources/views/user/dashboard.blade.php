@@ -96,7 +96,7 @@
 
               <p>Fund your account instantly</p>
 
-<br>
+<!-- <br>
                <button style="color:white; border:none; border-radius:20px; padding: 8px; background-color: red;"  type="button">  <a style="color: #E5F7FE;" class="nav-link {{ Request::is('user/rules*') ? 'active' : '' }}" href="{{ url('https://oprime.com.ng/wordpress/our-rules') }}">
       <i class="fi fi-rs-paper-plane"></i>
       <span class="nav-link-text">{{ __('CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU') }}</span>
@@ -109,7 +109,7 @@
       <span class="nav-link-text">{{ __('CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU') }}</span>
     </a></button></marquee> 
 
-<br>
+<br> -->
               </div>
             
             
