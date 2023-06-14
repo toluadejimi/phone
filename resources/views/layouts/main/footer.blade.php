@@ -2,7 +2,7 @@
     (function () {
         var options = {
            
-            whatsapp: "+2348169581573", // WhatsApp number
+            whatsapp: "+2348165486805", // WhatsApp number
             call_to_action: "Message us", // Call to action
             button_color: "#129BF4", // Color of button
             position: "right", // Position may be 'right' or 'left'
@@ -14,3 +14,5 @@
         var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
     })();
 </script>
+
+

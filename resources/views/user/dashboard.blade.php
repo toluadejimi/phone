@@ -43,7 +43,7 @@
       <div class="col">
         <h5 class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
 
-        <p> Welcome to Oprime, Buy all logs at an affordable price </p>
+        <p> Welcome to TWB Numbers, Buy all logs at an affordable price </p>
       </div>
 
 
@@ -129,11 +129,11 @@
               <br>
               <br>
             </div>
-    <button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://chat.whatsapp.com/KSh1zHhSeew4WXKsWU1slP">CLICK HERE TO JOIN OUR WHATSAPP GROUP</a></button>
+    <button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://wa.me/2348165486805">CHAT WITH US ON WHATSAPP</a></button>
 <br>
 <br>
 <br>
-<button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://wa.me/2347042591543">BUY USA NUMBER 4 VERIFICATIONS</a></button>
+<button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://wa.me/2348165486805">BUY USA NUMBER 4 VERIFICATIONS</a></button>
 
 
   </div>
