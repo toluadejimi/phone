@@ -17,7 +17,7 @@ Dear {{ $data1['name'] }},<br><br>
       <span class="nav-link-text">{{ __('CLICK ME TO READ MY RULES DONT SAY I DIDNT TELL YOU') }}</span>
     </a></button>
 
+<br>
 
-
-{{ __('Thank Your ') }} <br>
+{{ __('Thank You') }} <br>
 {{ config('app.name') }}
