@@ -141,6 +141,8 @@
 <br>
 
           <div class="col-auto">
+            <br>
+            <br>
             <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
               <i class="fas fa-server"></i>
             </div>
