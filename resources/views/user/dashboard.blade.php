@@ -47,7 +47,9 @@
        
         <p> Welcome to Oprime, Buy all logs at an affordable price </p>
       </div>
-
+<div>
+  <button style="background-color: green; color:white" type="button"><a style="color: white;" href="https://oprime.com.ng/wordpress/our-rules">CLICK HERE TO READ OUR RULES</a></button>
+</div>
 
       <div class="col-auto">
         <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
