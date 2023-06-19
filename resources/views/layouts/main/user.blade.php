@@ -1,7 +1,7 @@
 <!-- Nav items -->
 <style>
   body{
-    background-color: blue !important;
+    background-color: purple !important;
   }
 </style>
 
