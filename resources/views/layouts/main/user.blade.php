@@ -1,4 +1,6 @@
 <!-- Nav items -->
+
+
 <ul class="navbar-nav">
   <li class="nav-item">
     <a class="nav-link {{ Request::is('user/dashboard*') ? 'active' : '' }}" href="{{ route('user.dashboard.index') }}">

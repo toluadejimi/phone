@@ -6,6 +6,7 @@
 @section('content')
 
 @if(Auth::user()->updated_at == null)
+
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Alert!</strong> Please update your password on your profile page . <a class="text-white" href="profile">Click here to update</a>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -34,7 +35,6 @@
           {{ session()->get('error') }}
       </div>
       @endif
-      
 
 
 <div class="card card-stats">
@@ -42,9 +42,15 @@
   <div class="card-body">
     <div class="row">
       <div class="col">
-        <h5 class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
+        <h5 style="color: blue !important;" class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
 
+       
         <p> Welcome to Oprime, Buy all logs at an affordable price </p>
+        <br>
+        <div >
+        <button  style="border-radius:10px;padding:7px; border:none; background-color:blue; border:10px;color:white;" type="button"><a href="https://oprime.com.ng/wordpress/our-rules" >Our Rules Before Purchase</a></button>
+        <button  style="padding:7px; border:none; background-color:blue; border:10px;color:white;" type="button">Read Our Rules</button>
+        </div>
       </div>
 
 
@@ -75,7 +81,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h4 class="card-title text-uppercase   my-4">{{ __('Fund your Accoungfdts) }}</h4>
+            <h4 class="card-title text-uppercase   my-4">{{ __('Fund your Account') }}</h4>
 
             <form action="/user/fund-wallet" action="post">
               @csrf
@@ -134,7 +140,7 @@
 <br>
 <br>
 <br>
-<button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://wa.me/2348169581573">BUY USA NUMBER 4 VERIFICATIONS</a></button>
+<button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://wa.me/2347042591543">BUY USA NUMBER 4 VERIFICATIONS</a></button>
 
 
   </div>
