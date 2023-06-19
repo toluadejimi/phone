@@ -33,7 +33,7 @@ class AdminMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Admin Mail',
+            subject: 'User Purchase',
         );
     }
 
