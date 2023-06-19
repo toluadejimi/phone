@@ -74,7 +74,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h4 class="card-title text-uppercase   my-4">{{ __('Fund your Accounts) }}</h4>
+            <h4 class="card-title text-uppercase   my-4">{{ __('Funds your Accounts) }}</h4>
 
             <form action="/user/fund-wallet" action="post">
               @csrf
