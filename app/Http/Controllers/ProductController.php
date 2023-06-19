@@ -25,7 +25,7 @@ class ProductController extends Controller
     {
 
         $key = env('WEBKEY');
-        $ref = "FUD-" . random_int(100000, 999999);
+        $ref = "TWB-" . random_int(100000, 999999);
 
         $url = "https://web.enkpay.com/pay?amount=$request->amount&key=$key&ref=$ref&email=$request->email";
 

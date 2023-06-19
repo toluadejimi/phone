@@ -18,13 +18,13 @@
       <span class="nav-link-text">{{ __('Deposit') }}</span>
     </a>
   </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
     <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('https://oprimestore.com') }}">
       <i class="fi fi-rs-paper-plane"></i>
       <span class="nav-link-text">{{ __('Buy Airtime/Data') }}</span>
     </a>
     
-  </li>
+  </li> --}}
   <li class="nav-item">
     <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('user/logs') }}">
       <i class="fi fi-rs-paper-plane"></i>
@@ -39,7 +39,7 @@
   </li>
  
     <li class="nav-item">
-    <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('https://wa.me/2348169581573?text=hi') }}">
+    <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('https://wa.me/2348165486805?text=hi') }}">
       <i class="fi fi-rs-paper-plane"></i>
       <span class="nav-link-text">{{ __('Get Website') }}</span>
     </a>
