@@ -46,11 +46,6 @@
 
        
         <p> Welcome to Oprime, Buy all logs at an affordable price </p>
-        <br>
-        <div >
-        <button  style="border-radius:10px;padding:7px; border:none; background-color:blue; border:10px;color:white;" type="button"><a href="https://oprime.com.ng/wordpress/our-rules" >Our Rules Before Purchase</a></button>
-        <button  style="padding:7px; border:none; background-color:blue; border:10px;color:white;" type="button">Read Our Rules</button>
-        </div>
       </div>
 
 

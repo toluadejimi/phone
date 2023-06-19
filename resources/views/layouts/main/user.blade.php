@@ -1,5 +1,9 @@
 <!-- Nav items -->
-
+<style>
+  body{
+    background-color: blue !important;
+  }
+</style>
 
 <ul class="navbar-nav">
   <li class="nav-item">
