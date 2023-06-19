@@ -55,10 +55,10 @@
 
 
 
-      <div class="row">
+      <!-- <div class="row"> -->
 
 
-         <div class="col-xl-6 col-md-6">
+         <div class="col-xl-12 col-md-6">
 
          
             <div class="card card-stats">
@@ -135,7 +135,7 @@
                         </div>
                      </div>
 
-
+                  
                   </div>
 
                   </form>
@@ -357,9 +357,9 @@
 
 
    <div class="mt-4 alert alert-success">
-                                                Note: Buy clicking on buy you have agreed with our terms of service / Replacemnt.
+                                              <h3 style="color: red;"><strong>Note: Domain Gv is not Working for whatsapp again</strong> </h3> 
                                                 <br>
-                                                <br>
+                                              
                                                 Terms: All logs been uploaded to our platform is been tested before uploaded, therefore we only replace logs that the password is incorrect. Replacement is been done within 1 hour of the logs in your hands.
                                                 <br>
                                                 <br>
