@@ -140,6 +140,9 @@
 
                   </form>
 
+                  <div>
+  <button style="background-color: green; padding:6px; border:none; border-radius:10px" type="button"><a style="color: white;" href="https://oprime.com.ng/wordpress/our-rules">CLICK HERE TO READ OUR RULES</a></button>
+</div>
 
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                   <script>
@@ -356,20 +359,16 @@
    </div>
 
 
-   <div class="mt-4 alert alert-success">
-                                              <h3 style="color: red;"><strong>Note: Domain Gv is not Working for whatsapp again</strong> </h3> 
-                                                <br>
-                                              
-                                                Terms: All logs been uploaded to our platform is been tested before uploaded, therefore we only replace logs that the password is incorrect. Replacement is been done within 1 hour of the logs in your hands.
-                                                <br>
-                                                <br>
-                                                Logs we replace: Gmail Google voice,  TEXTNOW, Domain Google voice, Talkatone 
-                                                <br>
-                                                <br>
-                                                Knowledge: If you get a TEXTNOW logs, try to login directly from the TEXTNOW App or Login using Google account.
-                                                <br>
-                                                If your Gmail google voice get disabled, kindly request a review from Google they will unblock it for you within 1 to 2 days
-                                            </div>
+   
+<div style="background-color: green;">
+    <h3 style="color: red;"><strong>Note: Domain Gv is not Working for whatsapp again</strong></h3>
+    <br>
+    <p style="color: white;">Terms: All logs uploaded to our platform undergo testing before being uploaded. Therefore, we only replace logs if the password is incorrect. Replacement is done within 1 hour of the logs being in your hands.</p><br>
+
+    <p style="color: white;">Logs we replace: Gmail Google voice, TEXTNOW, Domain Google voice, Talkatone</p><br>
+    <p style="color: white;">Knowledge: If you receive TEXTNOW logs, try logging in directly from the TEXTNOW App or login using your Google account.</p><br>
+    <p style="color: white;">If your Gmail Google Voice account gets disabled, kindly request a review from Google. They will unblock it for you within 1 to 2 days.</p><br>
+</div>
 
 </div>
 
