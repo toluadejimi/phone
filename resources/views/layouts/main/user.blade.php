@@ -45,7 +45,7 @@
   </li>
  
     <li class="nav-item">
-    <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('https://wa.me/2348165486805?text=hi') }}">
+    <a class="nav-link {{ Request::is('user/logs*') ? 'active' : '' }}" href="{{ url('https://wa.me/2348169581573?text=hi') }}">
       <i class="fi fi-rs-paper-plane"></i>
       <span class="nav-link-text">{{ __('Get Website') }}</span>
     </a>
