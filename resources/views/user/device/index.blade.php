@@ -64,7 +64,7 @@
             <div class="card card-stats">
                <!-- Card body -->
                <div class="card-body">
-               <center><a href="https://dashboard.oprime.com.ng/user/device"> <div class="alert alert-success" role="alert"><marquee>  😍 <b><font color="black">GMAIL GV #2,000, DOMAIN GV:#900, TALKATONE: #1,3000, TEXTNOW: NOT AVAILABLE, TWITTER 12 YEARS: #800, NETFLIX: #900, waseunfunmi01.
+               <center><a href="https://dashboard.oprime.com.ng/user/device"> <div class="alert alert-success" role="alert"><marquee>  😍 <b><font color="black">GMAIL GV #2,000, DOMAIN GV:#900, TALKATONE: #1,3000, TEXTNOW: NOT AVAILABLE, TWITTER 12 YEARS: #800, NETFLIX: #900, 
          </font></b> 😍 <a href="https://dashboard.oprime.com.ng/user/device"> <button type="button" class="btn btn-success"> Order Now ▶ </button></a>
           </marquee></div></a></center>  
                   <h4 class=" mb-5 my-3">Buy Google Voice/ Textnow & Talkatone Log</h4>
