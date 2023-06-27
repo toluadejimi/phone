@@ -44,12 +44,11 @@
       <div class="col">
         <h5 style="color: blue !important;" class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
 
-       
+         <center><a href="https://dashboard.oprime.com.ng/user/device"> <div class="alert alert-success" role="alert"><marquee>  😍 <b><font color="black">GMAIL GV #2,000, DOMAIN GV:#900, TALKATONE: #1,3000, TEXTNOW: NOT AVAILABLE, TWITTER 12 YEARS: #800, NETFLIX: #900, </font></b> 😍 <a href="https://dashboard.oprime.com.ng/user/device"> <button type="button" class="btn btn-success"> Order Now ▶ </button></a>
+          </marquee></div></a></center>    
         <p> Welcome to Oprime, Buy all logs at an affordable price </p>
       </div>
-<div>
-  <button style="background-color: green; padding:6px; border:none; border-radius:10px" type="button"><a style="color: white;" href="https://oprime.com.ng/wordpress/our-rules">CLICK HERE TO READ OUR RULES</a></button>
-</div>
+
 
       <div class="col-auto">
         <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
@@ -99,7 +98,10 @@
 
 
               <p>Fund your account instantly</p>
-
+<br>
+<div>
+  <button style="background-color: green; padding:6px; border:none; border-radius:10px" type="button"><a style="color: white;" href="https://oprime.com.ng/wordpress/our-rules">CLICK HERE TO READ OUR RULES</a></button>
+</div>
 <!-- <br>
                <button style="color:white; border:none; border-radius:20px; padding: 8px; background-color: red;"  type="button">  <a style="color: #E5F7FE;" class="nav-link {{ Request::is('user/rules*') ? 'active' : '' }}" href="{{ url('https://oprime.com.ng/wordpress/our-rules') }}">
       <i class="fi fi-rs-paper-plane"></i>
