@@ -136,13 +136,16 @@
               <br>
               <br>
             </div>
-    <button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://chat.whatsapp.com/KSh1zHhSeew4WXKsWU1slP">CLICK HERE TO JOIN OUR WHATSAPP GROUP</a></button>
+    <button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: blue;" class="fa fa-users"  type="button"><a style="color: white;" href="https://chat.whatsapp.com/KSh1zHhSeew4WXKsWU1slP">CLICK HERE TO JOIN OUR WHATSAPP GROUP</a></button>
 <br>
 <br>
 <br>
-<button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: #E5F7FE;" class="fa fa-users"  type="button"><a href="https://wa.me/23481695815733">BUY USA NUMBER 4 VERIFICATIONS</a></button>
+<button style="color: white; border:none; border-radius:20px; padding: 15px; background-color: blue;" class="fa fa-users"  type="button"><a style="color: white;" href="https://wa.me/2347042591543">BUY USA NUMBER 4 VERIFICATIONS</a></button>
+<br>
+<br>
+<br>
 
-
+<button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: blue;" class="fa fa-users"  type="button"><a style="color: white" href="https://wa.me/2348169581573">BUY UK NUMBER 4 VERIFICATIONS</a></button>
   </div>
 <br>
 <br>
