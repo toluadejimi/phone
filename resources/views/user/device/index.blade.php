@@ -152,8 +152,10 @@
 <br>
 <br>
 
-<button style="color:blue; border:none; border-radius:20px; padding: 15px; background-color: blue;" class="fa fa-users"  type="button"><a style="color: white" href="https://wa.me/2348169581573">BUY UK NUMBER 4 VERIFICATIONS</a></button>
+<button style=" border:none; border-radius:20px; padding: 15px; background-color: blue;" class="fa fa-users"  type="button"><a style="color: white" href="https://wa.me/2348169581573">BUY UK NUMBER 4 VERIFICATIONS</a></button>
   <br>
+  <br>
+
   <button style="background-color: green; padding:6px; border:none; border-radius:10px" type="button"><a style="color: white;" href="https://oprime.com.ng/wordpress/our-rules">CLICK HERE TO READ OUR RULES</a></button>
 </div>
 
