@@ -18,7 +18,7 @@
 			<div class="card-body">
 				<form method="POST" class="ajaxform_instant_reload" action="{{ route('user.device.update',$device->uuid) }}">
 					@csrf
-					@method('PUT')
+					@method('PUT')        
 				
 				<div class="form-group row mb-4">
 					<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">{{ __('Device Name') }}</label>
