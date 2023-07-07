@@ -44,7 +44,7 @@
       <div class="col">
         <h5 style="color: blue !important;" class="card-title text-uppercase text-muted mb-2">Welcome {{ Auth::user()->name }}, </h5>
 
-         <center><a href="https://dashboard.oprime.com.ng/user/device"> <div class="alert alert-success" role="alert"><marquee>  😍 <b><font color="black">GMAIL GV #2,000, DOMAIN GV:#900, TALKATONE: #1,3000, TEXTNOW: NOT AVAILABLE, TWITTER 12 YEARS: #800, NETFLIX: #900, waseunfunmi01.
+         <center><a href="https://dashboard.oprime.com.ng/user/device"> <div class="alert alert-success" role="alert"><marquee>  😍 <b><font color="black">GMAIL GV #2,500, DOMAIN GV:#900, TALKATONE: #1,3000, TEXTNOW: NOT AVAILABLE, TWITTER 12 YEARS: #800, NETFLIX: #900, waseunfunmi01.
          </font></b> 😍 <a href="https://dashboard.oprime.com.ng/user/device"> <button type="button" class="btn btn-success"> Order Now ▶ </button></a>
           </marquee></div></a></center>    
         <p> Welcome to Oprime, Buy all logs at an affordable price </p>
