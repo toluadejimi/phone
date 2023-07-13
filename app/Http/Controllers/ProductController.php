@@ -92,10 +92,15 @@ class ProductController extends Controller
 
             if($status2 == 'false'){
                 return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
+                $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> $request->ip";
+                send_notification($message);
+
             }
 
             if($status1 == null || $amount2 == null || $status2 == null ){
                 return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
+                $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> $request->ip";
+                send_notification($message);
             }
 
 
@@ -130,6 +135,8 @@ class ProductController extends Controller
 
                 return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
             }
+            $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> $request->ip";
+            send_notification($message);
             return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
         }
     }
