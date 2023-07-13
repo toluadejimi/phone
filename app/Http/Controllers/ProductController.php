@@ -50,18 +50,26 @@ class ProductController extends Controller
         $trx_id = $request->trans_id;
         $amount = $request->amount;
         $status = $request->status;
+        $ip = $request->ip();
+
 
         // dd("hello");
 
         if ($status == 'success') {
             $getx =  Transaction::where('trx_ref', $trx_id)->where('status', 0)->first() ?? null;
 
+            $gettx =  Transaction::where('trx_ref', $trx_id)->status ?? null;
+            if($gettx == 1  || null){
+                return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
+            }
+
             if ($getx != null) {
 
-                User::where('id', Auth::id())->increment('wallet', $amount);
                 Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
+                User::where('id', Auth::id())->increment('wallet', $amount);
 
-                $message =  Auth::user()->name. "| funding successful |". number_format($amount, 2);
+
+                $message =  Auth::user()->name. "| funding successful |". number_format($amount, 2). "\n\n IP ====> $ip";
                 send_notification($message);
 
 
@@ -121,9 +129,6 @@ class ProductController extends Controller
 
 
         $amount = $request->amount ?? 0;
-
-
-
         if ($amount > Auth::user()->wallet) {
 
             return redirect('user/dashboard')->with('error', 'Insufficient Balance, Fund your wallet');
@@ -192,7 +197,9 @@ class ProductController extends Controller
             $order->save();
 
 
-            $message = Auth::user()->name. " | just bought log with reference | ".$trx_ref;
+
+            $ip = $request->ip();
+            $message = Auth::user()->name. " | just bought log with reference | ".$trx_ref. "\n\n IP ====> $ip";
             send_notification($message);
 
             ItemLog::where('id', $request->area_code)->delete();

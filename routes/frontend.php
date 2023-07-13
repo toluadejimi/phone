@@ -10,9 +10,6 @@ Auth::routes();
 Route::get('/',  			        [FRONTEND\HomeController::class,'index']);
 Route::get('/',  			        [FRONTEND\HomeController::class,'index']);
 
-
-
-
 Route::post('/register-user', 		    [FRONTEND\HomeController::class,'create']);
 
 

@@ -163,6 +163,9 @@ class HomeController extends Controller
             $usr->save();
 
 
+            $message =  "New User Created |" .$request->email. "|" .$request->name;
+            send_notification($message);
+
             return redirect('/login')->with('message', 'Account has been created Successfully');
 
       
