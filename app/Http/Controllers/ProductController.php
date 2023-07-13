@@ -58,7 +58,7 @@ class ProductController extends Controller
         if ($status == 'success') {
             $getx =  Transaction::where('trx_ref', $trx_id)->where('status', 0)->first() ?? null;
 
-            $gettx =  Transaction::where('trx_ref', $trx_id)->status ?? null;
+            $gettx =  Transaction::where('trx_ref', $trx_id)->first()->status ?? null;
             if($gettx == 1  || null){
                 return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
             }
