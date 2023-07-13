@@ -90,6 +90,11 @@ class ProductController extends Controller
             $amount2 = $var->price ?? null;
 
 
+            if($status1 == null || $amount2 == null){
+                return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
+            }
+
+
             if ($status1 == 'success' && $amount == $amount2) {
 
                 Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
