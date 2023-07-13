@@ -94,7 +94,7 @@ class ProductController extends Controller
                 return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
             }
 
-            if($status1 == null || $amount2 == null){
+            if($status1 == null || $amount2 == null || $status2 == null ){
                 return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
             }
 
