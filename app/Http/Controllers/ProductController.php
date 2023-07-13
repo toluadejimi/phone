@@ -82,8 +82,6 @@ class ProductController extends Controller
                 CURLOPT_POSTFIELDS => array('trans_id' => "$trx_id"),
             ));
 
-            $response = curl_exec($curl);
-
             $var = curl_exec($curl);
             curl_close($curl);
             $var = json_decode($var);
