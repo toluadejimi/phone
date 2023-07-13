@@ -45,63 +45,11 @@ class ProductController extends Controller
     public function verify_trx(request $request)
     {
 
-
-
         $trx_id = $request->trans_id;
         $amount = $request->amount;
         $status = $request->status;
         $ip = $request->ip();
 
-
-        // dd("hello");
-
-        if ($status == 'success') {
-            $getx =  Transaction::where('trx_ref', $trx_id)->where('status', 0)->first() ?? null;
-
-            $gettx =  Transaction::where('trx_ref', $trx_id)->first()->status ?? null;
-            if($gettx == 1  || null){
-                return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
-            }
-
-            if ($getx != null) {
-
-                Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
-                User::where('id', Auth::id())->increment('wallet', $amount);
-
-
-                $message =  Auth::user()->name. "| funding successful |". number_format($amount, 2). "\n\n IP ====> $ip";
-                send_notification($message);
-
-
-                $usr = User::where('id', Auth::id())->first() ?? null;
-
-                if($usr->email != null){
-
-                    $data = array(
-                        'fromsender' => 'admin@oprime.com.ng', 'Oprime',
-                        'subject' => "Wallet Funded",
-                        'toreceiver' => Auth::user()->email,
-                        'amount' => $amount,
-                        'name' => Auth::user()->name,
-    
-    
-    
-                    );
-    
-    
-                    Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
-                        $message->from($data['fromsender']);
-                        $message->to($data['toreceiver']);
-                        $message->subject($data['subject']);
-                    });
-
-                }
-
-              
-
-                return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
-            }
-        }
 
 
         if ($status == 'failed') {
@@ -109,13 +57,74 @@ class ProductController extends Controller
             Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 2]);
 
 
-            $message =  Auth::user()->name. "| canceled funding |";
+            $message =  Auth::user()->name . "| canceled funding |";
             send_notification($message);
 
             return redirect('user/dashboard')->with('error', 'Transaction Declined');
         }
 
-        return redirect('user/dashboard')->with('error', 'Transaction Declined');
+
+
+
+        if ($status == 'success') {
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://web.enkpay.com/api/verify',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => array('trans_id' => "$trx_id"),
+            ));
+
+            $response = curl_exec($curl);
+
+            $var = curl_exec($curl);
+            curl_close($curl);
+            $var = json_decode($var);
+
+            $status1 = $var->detail ?? null;
+            $amount2 = $var->price ?? null;
+
+
+            if ($status1 == 'success' && $amount == $amount2) {
+
+                Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
+                User::where('id', Auth::id())->increment('wallet', $amount);
+
+                $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip";
+                send_notification($message);
+
+                $usr = User::where('id', Auth::id())->first() ?? null;
+
+                if ($usr->email != null) {
+
+                    $data = array(
+                        'fromsender' => 'admin@oprime.com.ng', 'Oprime',
+                        'subject' => "Wallet Funded",
+                        'toreceiver' => Auth::user()->email,
+                        'amount' => $amount,
+                        'name' => Auth::user()->name,
+
+                    );
+
+
+                    Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
+                        $message->from($data['fromsender']);
+                        $message->to($data['toreceiver']);
+                        $message->subject($data['subject']);
+                    });
+                }
+
+                return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
+            }
+            return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
+        }
     }
 
 
@@ -132,7 +141,6 @@ class ProductController extends Controller
         if ($amount > Auth::user()->wallet) {
 
             return redirect('user/dashboard')->with('error', 'Insufficient Balance, Fund your wallet');
-
         }
 
         if ($amount > Auth::user()->wallet) {
@@ -164,10 +172,9 @@ class ProductController extends Controller
                 'redirect' => route('dashboard'),
                 'message'  => __('Insufficient Balance, Fund your wallet.')
             ]);
-
         } else {
 
-                User::where('id', Auth::id())->decrement('wallet', $amount);
+            User::where('id', Auth::id())->decrement('wallet', $amount);
 
             $pr = ItemLog::where('id', $request->area_code)->first();
 
@@ -199,7 +206,7 @@ class ProductController extends Controller
 
 
             $ip = $request->ip();
-            $message = Auth::user()->name. " | just bought log with reference | ".$trx_ref. "\n\n IP ====> $ip";
+            $message = Auth::user()->name . " | just bought log with reference | " . $trx_ref . "\n\n IP ====> $ip";
             send_notification($message);
 
             ItemLog::where('id', $request->area_code)->delete();
@@ -228,27 +235,27 @@ class ProductController extends Controller
             });
 
 
-        
-                $details = [
-                    'subject' => 'Something bought',
-                    'name' => $data['toreceiver'],
-                    'data'=> $data['logdata']
-                    ];
-                    
+
+            $details = [
+                'subject' => 'Something bought',
+                'name' => $data['toreceiver'],
+                'data' => $data['logdata']
+            ];
 
 
-      
+
+
             FacadesMail::to('yekeenoluwaseun0001@gmail.com')->send(
                 new AdminMail($details)
 
 
             );
-            }
-            
+        }
 
 
 
-            return redirect('user/dashboard')->with('message', "Log purchase successful");
+
+        return redirect('user/dashboard')->with('message', "Log purchase successful");
 
 
         return back()->with('error', "Insufficient Balance, Fund your wallet");
