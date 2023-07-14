@@ -25,7 +25,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth','user
    Route::post('/buy-now',                      [ProductController::class,'buyNow']);
    Route::get('/fund-wallet',                  [ProductController::class,'fund_now']);
 
-   Route::get('verify-trx',                      [ProductController::class,'verify_trx']);
+   Route::get('verify-trx',                      [ProductController::class,'verify_payment']);
 
 
 
