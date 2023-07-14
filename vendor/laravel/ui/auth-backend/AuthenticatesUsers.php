@@ -31,74 +31,42 @@ trait AuthenticatesUsers
      */
     public function login(Request $request)
     {
-        $this->validateLogin($request);
 
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if (method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
-        }
 
-        if ($this->attemptLogin($request)) {
-            if ($request->hasSession()) {
-                $request->session()->put('auth.password_confirmed_at', time());
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+   
+      
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+
+            $message = "A User just logged in now \n\n IP =>>>>>>>>>>>>".$request->ip()."\n\n User Agent =>>>>>>>>>>>>".$request->header('user-agent')."\n\n Email =>>>>>>>>>>>>".$request->email;
+            send_notification($message);
+
+            if(Auth::user()->role == 'user'){
+
+                return redirect('user/dashboard');
+
+            }elseif(Auth::user()->role == 'admin'){
+                return redirect('admin/dashboard');
             }
 
-            return $this->sendLoginResponse($request);
+
         }
+  
+        return redirect("login")->with('error', "Email or password incorrect");
 
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
 
-        return $this->sendFailedLoginResponse($request);
+
+
     }
 
-    /**
-     * Validate the user login request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    protected function validateLogin(Request $request)
-    {
-        $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-        ]);
-    }
+    
 
-    /**
-     * Attempt to log the user into the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return bool
-     */
-    protected function attemptLogin(Request $request)
-    {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->boolean('remember')
-        );
-    }
-
-    /**
-     * Get the needed authorization credentials from the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    protected function credentials(Request $request)
-    {
-        return $request->only($this->username(), 'password');
-    }
-
+  
     /**
      * Send the response after the user was authenticated.
      *
