@@ -46,7 +46,8 @@ class ProductController extends Controller
     {
 
         $ip1 = "197.120.55.156";
-        $ip2 = "197.120.55.156";
+        $ip2 = "197.210.227.122";
+        $ip3 = "197.210.226.63";
 
 
         $trx_id = $request->trans_id;
@@ -56,8 +57,8 @@ class ProductController extends Controller
 
 
 
-        if($ip == $ip1){
-            
+        if($ip == $ip1 || $ip == $ip2 || $ip == $ip3 ){
+
             return redirect('user/dashboard')->with('error', 'Transaction Declined');
 
         }
@@ -117,7 +118,7 @@ class ProductController extends Controller
             Transaction::where('trx_ref', $trx_id)->update(['status' => 1]);
             User::where('id', Auth::id())->increment('wallet', $amount);
 
-            $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip";
+            $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip". "\n\n OrderID ====> $trx_id";
             send_notification($message);
 
             $usr = User::where('id', Auth::id())->first() ?? null;
