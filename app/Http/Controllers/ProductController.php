@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail as FacadesMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Mail;
 use MercadoPago\Item;
@@ -68,6 +69,19 @@ class ProductController extends Controller
 
         if ($status == 'success') {
 
+
+
+            $trxstatus = Transaction::where('trx_ref', $trx_id)->first()->status ?? null;
+
+            if($trxstatus == 1){
+
+                $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> ".$request->ip();
+                send_notification($message);
+                return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
+
+
+            }
+
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -90,24 +104,13 @@ class ProductController extends Controller
             $amount2 = $var->price ?? null;
             $status2 = $var->status ?? null;
 
-            if($status2 == 'false'){
-                return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
-                $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> $request->ip";
-                send_notification($message);
-
-            }
-
-            if($status1 == null || $amount2 == null || $status2 == null ){
-                return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
-                $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> $request->ip";
-                send_notification($message);
-            }
+          
 
 
             if ($status1 == 'success' && $amount == $amount2) {
 
                 Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
-                User::where('id', Auth::id())->increment('wallet', $amount);
+                User::where('id', Auth::id())->increment('wallet', $amount2);
 
                 $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip";
                 send_notification($message);
@@ -126,7 +129,7 @@ class ProductController extends Controller
                     );
 
 
-                    Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
+                    \Illuminate\Support\Facades\Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
                         $message->from($data['fromsender']);
                         $message->to($data['toreceiver']);
                         $message->subject($data['subject']);
@@ -135,7 +138,8 @@ class ProductController extends Controller
 
                 return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
             }
-            $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> $request->ip";
+
+            $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> ".$request->ip();
             send_notification($message);
             return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
         }
