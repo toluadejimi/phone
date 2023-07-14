@@ -272,6 +272,10 @@
 							@endif
 
 
+							{{ $trx->status }}
+
+
+
 							
 							
 							<td class="">
