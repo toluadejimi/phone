@@ -263,10 +263,10 @@
 							<td><span class="badge rounded-pill bg-warning">Pending</span></td>
 							@endif
 
-							@if($trx->status == "2")
-							<td><span class="badge rounded-pill bg-danger text-white ">Decline</span></td>
-							@elseif($trx->status == "1")
+							@if($trx->status == "1")
 							<td><span class="badge rounded-pill bg-success text-white">Successful</span></td>
+							@elseif($trx->status == "2")
+							<td><span class="badge rounded-pill bg-danger text-white ">Decline</span></td>
 							@else
 							<td><span class="badge rounded-pill bg-warning text-white">Pending</span></td>
 							@endif
