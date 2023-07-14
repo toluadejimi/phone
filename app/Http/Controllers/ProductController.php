@@ -42,14 +42,25 @@ class ProductController extends Controller
         return Redirect::to($url);
     }
 
-    public function verify_trx(request $request)
+    public function verify_payment(request $request)
     {
 
-        $trx_id = $request->trans_id;
-        $amount = $request->amount;
-        $status = $request->status;
-        $ip = $request->ip();
+        $ip1 = "197.120.55.156";
+        $ip2 = "197.120.55.156";
 
+
+        $trx_id = $request->trans_id;
+        $ip = $request->ip();
+        $status = $request->status;
+
+
+
+
+        if($ip == $ip1){
+            
+            return redirect('user/dashboard')->with('error', 'Transaction Declined');
+
+        }
 
 
         if ($status == 'failed') {
@@ -66,82 +77,76 @@ class ProductController extends Controller
 
 
 
-        if ($status == 'success') {
 
 
+        $trxstatus = Transaction::where('trx_ref', $trx_id)->first()->status ?? null;
 
-            $trxstatus = Transaction::where('trx_ref', $trx_id)->first()->status ?? null;
+        if ($trxstatus == 1) {
 
-            if($trxstatus == 1){
-
-                $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> ".$request->ip();
-                send_notification($message);
-                return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
-
-
-            }
-
-            $curl = curl_init();
-
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://web.enkpay.com/api/verify',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => array('trans_id' => "$trx_id"),
-            ));
-
-            $var = curl_exec($curl);
-            curl_close($curl);
-            $var = json_decode($var);
-
-            $status1 = $var->detail ?? null;
-            $amount2 = $var->price ?? null;
-            $status2 = $var->status ?? null;
-
-          
-
-
-            if ($status1 == 'success' && $amount == $amount2) {
-
-                Transaction::where('trx_ref', $trx_id)->where('status', 0)->update(['status' => 1]);
-                User::where('id', Auth::id())->increment('wallet', $amount2);
-
-                $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip";
-                send_notification($message);
-
-                $usr = User::where('id', Auth::id())->first() ?? null;
-
-                if ($usr->email != null) {
-
-                    $data = array(
-                        'fromsender' => 'admin@oprime.com.ng', 'Oprime',
-                        'subject' => "Wallet Funded",
-                        'toreceiver' => Auth::user()->email,
-                        'amount' => $amount,
-                        'name' => Auth::user()->name,
-
-                    );
-
-
-                    Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
-                        $message->from($data['fromsender']);
-                        $message->to($data['toreceiver']);
-                        $message->subject($data['subject']);
-                    });
-                }
-
-                return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
-            }
-
-            $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> ".$request->ip();
+            $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> " . $request->ip();
             send_notification($message);
             return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
         }
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://web.enkpay.com/api/verify',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('trans_id' => "$trx_id"),
+        ));
+
+        $var = curl_exec($curl);
+        curl_close($curl);
+        $var = json_decode($var);
+
+        $status1 = $var->detail ?? null;
+        $amount = $var->price ?? null;
+
+
+
+
+        if ($status1 == 'success') {
+
+            Transaction::where('trx_ref', $trx_id)->update(['status' => 1]);
+            User::where('id', Auth::id())->increment('wallet', $amount);
+
+            $message =  Auth::user()->name . "| funding successful |" . number_format($amount, 2) . "\n\n IP ====> $ip";
+            send_notification($message);
+
+            $usr = User::where('id', Auth::id())->first() ?? null;
+
+            if ($usr->email != null) {
+
+                $data = array(
+                    'fromsender' => 'admin@oprime.com.ng', 'Oprime',
+                    'subject' => "Wallet Funded",
+                    'toreceiver' => Auth::user()->email,
+                    'amount' => $amount,
+                    'name' => Auth::user()->name,
+
+                );
+
+
+                Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
+                    $message->from($data['fromsender']);
+                    $message->to($data['toreceiver']);
+                    $message->subject($data['subject']);
+                });
+            }
+
+            return redirect('user/dashboard')->with('message', "Wallet has been funded with $amount");
+        }
+
+        $message =  Auth::user()->name . "| is trying to fund  with | $request->trx_id  | " . number_format($request->amount, 2) . "\n\n IP ====> " . $request->ip();
+        send_notification($message);
+        return redirect('user/dashboard')->with('error', 'Transaction already confirmed or not found');
     }
 
 
