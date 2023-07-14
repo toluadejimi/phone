@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
-use Mail;
 use MercadoPago\Item;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -129,7 +128,7 @@ class ProductController extends Controller
                     );
 
 
-                    \Illuminate\Support\Facades\Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
+                    Mail::send('mails.fund', ["data1" => $data], function ($message) use ($data) {
                         $message->from($data['fromsender']);
                         $message->to($data['toreceiver']);
                         $message->subject($data['subject']);
